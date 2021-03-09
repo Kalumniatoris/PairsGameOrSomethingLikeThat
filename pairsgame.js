@@ -52,6 +52,7 @@ p.mouseClicked = function(){
     t =  p.max(0, t);
   
    console.log("t: "+t);
+   if(!game.lSymbols[t].disabled){
       if(game.currentSymbol==-1){
         console.log("selecting: ");
     game.currentSymbol=t;
@@ -67,7 +68,7 @@ p.mouseClicked = function(){
       console.log("pair");
       game.currentSymbol=-1;
     }
-    }
+    }}
     
 };
 
