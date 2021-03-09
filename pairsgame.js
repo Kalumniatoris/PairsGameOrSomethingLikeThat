@@ -103,7 +103,7 @@ function generateBoard(shapes, colors, sizesq) {
   generateSymbols(vcount, shapes);
 
 }
-
+/////that boardCan should be fixed, maybe I should move it into bc or something
 function generateColors(count) {
   let colors = [];
   let bcolors = [];
