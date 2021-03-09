@@ -95,7 +95,8 @@ let boardCan=new p5(bc,'gameBoard');
 
 //////
 function generateBoard(shapes, colors, sizesq) {
-  
+  game.shapesCount=shapes;
+  game.colorsCount=colors;game.size=sizesq;
   size = sizesq;
   console.log("Generating board " + [shapes, colors, size]);
   let vcount = size * size;

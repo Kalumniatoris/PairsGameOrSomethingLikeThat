@@ -9,7 +9,7 @@ class Shape {
   }
 
   compareTo(target) {
-    try {
+    /*try {
       var thd = this.disabled;
       var tad = target.disabled;
 
@@ -21,13 +21,19 @@ class Shape {
       console.log(this);
       console.log(target);
       return false;
-    }
+    }*/
+    
+    return this.compareTo2(target,1);
   }
 
   compareTo2(target, s) {
     try {
       if (this.disabled) { return false; }
-      var t = (this.shape == target.shape) + (this.fill == target.fill) + (this.border == target.border);
+      var t=0;
+      if(game.colors.length>1 && (this.fill == target.fill)){t+=1;}
+      if(game.shapesCount>1 && (this.shape == target.shape)){t+=1;}
+      if(game.bcolors.length>1 && (this.border == target.border)){t+=1;}
+      //t = (this.shape == target.shape) + (this.fill == target.fill) + (this.border == target.border);
 
       return t >= s;
     }
