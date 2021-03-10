@@ -5,8 +5,9 @@ var game = {
   colors: [],
   bcolors: [],
   lSymbols: [],
-  currentSymbol:-1
-
+  currentSymbol:-1,
+  annoyingMode:false
+  
 };
 
 const can = 600;
@@ -70,6 +71,11 @@ p.mouseClicked = function(){
       game.lSymbols[game.currentSymbol].disabled=true;
       console.log("pair");
       game.currentSymbol=-1;
+      
+      if(game.annoyingMode){
+      shuffleA();
+      updateColors();
+      }
     }
     }}
     

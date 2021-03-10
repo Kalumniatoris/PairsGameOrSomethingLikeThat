@@ -12,3 +12,8 @@ function generate() {
 function shuffleA(){
   shuffle(game.lSymbols);
 }
+
+function toggleAnnoyingMode(){
+  game.annoyingMode=!game.annoyingMode;
+
+}
