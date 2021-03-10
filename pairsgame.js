@@ -33,6 +33,9 @@ p.draw=function() {
 };
 
 p.mouseClicked = function(){
+  
+  if(p.mouseX>p.width||p.mouseX<0||p.mouseY>p.height||p.mouseY<0){return;}
+  
   console.log("clicked");
   
   
@@ -95,6 +98,7 @@ let boardCan=new p5(bc,'gameBoard');
 
 //////
 function generateBoard(shapes, colors, sizesq) {
+  game.currentSymbol=-1;
   game.shapesCount=shapes;
   game.colorsCount=colors;game.size=sizesq;
   size = sizesq;
@@ -110,8 +114,8 @@ function generateColors(count) {
   let colors = [];
   let bcolors = [];
   for (n = 0; n < count; n += 1) {
-    colors.push([Math.floor(boardCan.random(255)), Math.floor(Math.sqrt(255)), Math.floor(boardCan.random(255))]);
-    bcolors.push([boardCan.random(255), boardCan.random(255), boardCan.random(255)]);
+    colors.push([Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255))]);
+    bcolors.push([Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255))]);
   }
 
   game.colors = colors;
@@ -150,11 +154,12 @@ function helper(cv,hints) {
   cv.stroke(255, 255, 255);
   cv.square(qx * siz * 2, qy * siz * 2, siz * 2);
 
-  
-    var t = qy * svc + qx;
+      var t = qy * svc + qx;
     t =  cv.min(vcount - 1, t);
     t =  cv.max(0, t);
     
+  
+
 
 
   if (hints) {

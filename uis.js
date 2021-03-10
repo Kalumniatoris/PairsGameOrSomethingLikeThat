@@ -8,3 +8,7 @@ function generate() {
     generateBoard(cshapes, ccolors, csize);
 
 }
+
+function shuffleA(){
+  shuffle(game.lSymbols);
+}

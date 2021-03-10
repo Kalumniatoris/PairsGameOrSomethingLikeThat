@@ -28,7 +28,7 @@ class Shape {
 
   compareTo2(target, s) {
     try {
-      if (this.disabled) { return false; }
+      if (this.disabled || target.disabled) { return false; }
       var t=0;
       if(game.colors.length>1 && (this.fill == target.fill)){t+=1;}
       if(game.shapesCount>1 && (this.shape == target.shape)){t+=1;}
@@ -48,8 +48,8 @@ class Shape {
      cins.stroke(game.bcolors[this.border]);
 
     if (this.disabled) {
-   cins.fill([128, 128, 128]);
-      cins.stroke([128, 128, 128]);
+   cins.fill([10,10,10]);
+      cins.stroke([10,10,10]);
     }
      cins.strokeWeight(s / 4);
 
