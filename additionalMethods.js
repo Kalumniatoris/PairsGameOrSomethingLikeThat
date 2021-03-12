@@ -27,3 +27,16 @@ game.colors.forEach((x,n)=>{game.colors[n]=[Math.floor(boardCan.random(255)), Ma
 
 game.bcolors.forEach((x,n)=>{game.bcolors[n]=[Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255))];});
 }
+
+function countDisabled(){return game.lSymbols.reduce(function(pr,cr,ins,ar){return pr+ar[ins].disabled;},0);}
+
+function countLeft(){return game.lSymbols.reduce(function(pr,cr,ins,ar){return pr+!ar[ins].disabled;},0);}
+
+function reduceBoard(toSize){
+  let size2=toSize*toSize;
+   game.lSymbols.sort(compareShapes);
+   game.lSymbols=game.lSymbols.slice(0,size2);
+   game.size=toSize;
+   updateTileSize(size2);
+   shuffleA();
+}
