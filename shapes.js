@@ -74,7 +74,32 @@ class Shape {
       case 4:
          cins.quad(x - s / 2, y, x, y - s / 2, x + s / 2, y, x, y + s / 2);
         break;
+      case 5:
+          cins.beginShape();        
+          cins.vertex(x - s / 2, y - s / 2);
+          cins.vertex(x - s / 2,y+s/2);
+          cins.vertex(x+s/2, y+s/2);
+          cins.vertex(x+s/2, y);
+          cins.vertex(x,y);
+          cins.vertex(x,y-s/2);         // cins.vertex(x+s/2,y-s/2);
+               
+        cins.endShape(cins.CLOSE);
+        break;
+        
+      case 6:
+             cins.beginShape();        
+          cins.curveVertex(x - s / 2, y - s / 2);
+          cins.curveVertex(x + s / 2,y);
+          cins.curveVertex(x-s/2, y+s/2);    
+        cins.endShape(cins.CLOSE);
+        break;
+      
+      
       default:
+
+
+
+
 
         break;
     }

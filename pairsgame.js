@@ -1,7 +1,7 @@
 var game = {
   colorsCount: 12,
-  shapesCount: 4,
-  size: 3,
+  shapesCount: 5,
+  size: 5,
   colors: [],
   bcolors: [],
   lSymbols: [],
