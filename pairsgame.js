@@ -10,6 +10,9 @@ var game = {
   tileSize:100
 };
 
+var gameHistory=[];
+
+
 const can = 600;
 var canvas;
 var ccs = 100;
@@ -31,25 +34,25 @@ p.draw=function() {
 };
 
 p.mouseClicked = function(){
-  
+  //clicked outside of board
   if(p.mouseX>p.width||p.mouseX<0||p.mouseY>p.height||p.mouseY<0){return;}
   
   //console.log("clicked");
   
   
-   let vcount = game.size * game.size;
-  var svc = Math.sqrt(vcount);
+  //let vcount = game.size * game.size;
+  //var svc = Math.sqrt(vcount);
   let qx = Math.floor((p.mouseX) / (game.tileSize * 2));
   let qy = Math.floor((p.mouseY) / (game.tileSize * 2));
 
-  qx =  p.min(qx, svc);
+  qx =  p.min(qx,  game.size);
   qx =  p.max(0, qx);
 
-  qy = p.min(qy, svc - 1);
+  qy = p.min(qy,  game.size - 1);
   qy =  p.max(0, qy);
   
-   var t = qy * svc + qx;
-    t =  p.min(vcount - 1, t);
+   var t = qy *  game.size + qx;
+    t =  p.min( game.size*game.size - 1, t);
     t =  p.max(0, t);
   
   // console.log("t: "+t);
@@ -64,6 +67,8 @@ p.mouseClicked = function(){
     }
     else{
     if(game.lSymbols[t].compareTo(game.lSymbols[game.currentSymbol])){
+      gameHistory.push([game.lSymbols[t],game.lSymbols[game.currentSymbol]]);
+      
       game.lSymbols[t].disabled=true;
       game.lSymbols[game.currentSymbol].disabled=true;
   //    console.log("pair");
