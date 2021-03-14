@@ -5,7 +5,8 @@ function generate() {
     var cshapes = document.getElementById("numshapes").value;
     var csize = document.getElementById("numsize").value;
     var ccolors = document.getElementById("numcolors").value;
-    generateBoard(cshapes, ccolors, csize);
+    var bcolors = document.getElementById("numBcolors").value;
+    generateBoard(cshapes, ccolors,bcolors, csize);
 
 }
 

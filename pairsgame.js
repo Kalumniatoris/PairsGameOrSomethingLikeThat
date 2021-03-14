@@ -1,5 +1,4 @@
 var game = {
-  colorsCount: 12,
   shapesCount: 5,
   size: 5,
   colors: [],
@@ -23,7 +22,7 @@ p.setup = function() {
   p.createCanvas(can, can);
  // canvas.parent("gameBoard");
   p.background([123,55,0]);
-  generateBoard(game.shapesCount, game.colorsCount, game.size);
+  generateBoard(game.shapesCount, 6,6, game.size);
 };
 p.draw=function() {
 
@@ -113,31 +112,42 @@ function updateTileSize(tilesCount){
  
 }
 
-function generateBoard(shapes, colors, sizesq) {
+function generateBoard(shapes, colors,bcolors, sizesq) {
   game.currentSymbol=-1;
   game.shapesCount=shapes;
-  game.colorsCount=colors;
+  //game.colorsCount=colors;
   game.size=sizesq;
   console.log("Generating board " + [shapes, colors, game.size]);
   let vcount = game.size * game.size;
   updateTileSize(vcount);
   //
   generateColors(colors);
+   generateBcolors(bcolors);
   generateSymbols(vcount, shapes);
 
 }
 /////that boardCan should be fixed, maybe I should move it into bc or something
 function generateColors(count) {
   let colors = [];
-  let bcolors = [];
+//  let bcolors = [];
   for (n = 0; n < count; n += 1) {
     colors.push([Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255))]);
-    bcolors.push([Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255))]);
+  //  bcolors.push([Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255))]);
   }
 
   game.colors = colors;
+//  game.bcolors = bcolors;
+}
+
+function generateBcolors(count) {
+  let bcolors = [];
+  for (n = 0; n < count; n += 1) {
+   bcolors.push([Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255))]);
+  }
+
   game.bcolors = bcolors;
 }
+
 
 function generateSymbols(count, shapes = 4) {
   let lSymbols = [];
