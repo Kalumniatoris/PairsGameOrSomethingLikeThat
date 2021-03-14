@@ -46,13 +46,16 @@ class Shape {
   Sdraw(x, y, s,cins) {
     cins.fill(game.colors[this.fill]);
      cins.stroke(game.bcolors[this.border]);
-
+     
+    if(game.colors.length==1){cins.fill(game.bcolors[this.border]);}
+    if(game.bcolors.length==1){cins.stroke(game.colors[this.fill]);}
+    
     if (this.disabled) {
    cins.fill([10,10,10]);
       cins.stroke([10,10,10]);
     }
      cins.strokeWeight(s / 4);
-
+  
 
     //x,y = center
     //s = size
