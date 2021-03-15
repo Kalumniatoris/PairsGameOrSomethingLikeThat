@@ -17,20 +17,35 @@
   <style> body { padding: 0; margin: 0; } </style>
 </head>
 
-<body>
+<body onload="onl()">
 <br><br>
 <div id="gameBoard"></div>
 <hr>
 <div id="current"></div>
 <hr>
+<fieldset>
+<legend>Random game</legend>
 <label>shapes: </label><input type="number" id="numshapes" min=1 max=7 value=5><br>
 <label>size: </label><input type="number" id="numsize" min=1 max=15 value=5><br>
 <label>colors: </label><input type="number" id="numcolors" min=1 value=6><label>bcolors: </label><input type="number" id="numBcolors" min=1 value=6>
 <br>
 <button id="generate" onclick="generate()">Generate</button>
+</fieldset>
 <button id="shuffle" onclick="shuffleA()">Shuffle</button>
 <button id="upColors" onclick="updateColors()">Randomize colors</button>
 <br>
+
 <button id="annoying mode" onclick="toggleAnnoyingMode()">Toggle annoying mode</button>
+<br>
+<fieldset>
+
+<legend>Game mode</legend>
+<form  oninput="target.value=targetMin.value+' - '+targetMax.value">
+<label for="targetMin">Min:</label><input type="range" id="targetMin" min=0 max=3 value=1>
+
+<label for="targetMax">Max:</label><input type="range" id="targetMax" min=0 max=3 value=3>
+<output name="target" for="targetMin targetMax">1-3</output>
+<form>
+</fieldset>
 </body>
 </html>
