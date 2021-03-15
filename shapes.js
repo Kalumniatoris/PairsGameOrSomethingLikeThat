@@ -23,10 +23,10 @@ class Shape {
       return false;
     }*/
     
-    return this.compareTo2(target,1);
+    return this.compareTo2(target,1,3);
   }
 
-  compareTo2(target, s) {
+  compareTo2(target, s,mx) {
     try {
       if (this.disabled || target.disabled) { return false; }
       var t=0;
@@ -34,8 +34,10 @@ class Shape {
       if(game.shapesCount>1 && (this.shape == target.shape)){t+=1;}
       if(game.bcolors.length>1 && (this.border == target.border)){t+=1;}
       //t = (this.shape == target.shape) + (this.fill == target.fill) + (this.border == target.border);
-
-      return t >= s;
+      
+      console.log("targets: "+t+" "+s+" "+mx);
+      console.log((t >= s) && (t<=mx));
+      return (t >= s) && (t<=mx);
     }
     catch (e) {
       return false;

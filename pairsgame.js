@@ -6,10 +6,12 @@ var game = {
   lSymbols: [],
   currentSymbol:-1,
   annoyingMode:false,
-  tileSize:100
+  tileSize:100,
+  targetMin:1,
+  targetMax:3
 };
 
-var gameHistory=[];
+var gameHistory=[]; //do not use,
 
 
 const can = 600;
@@ -65,8 +67,8 @@ p.mouseClicked = function(){
      game.currentSymbol=-1; 
     }
     else{
-    if(game.lSymbols[t].compareTo(game.lSymbols[game.currentSymbol])){
-      gameHistory.push([game.lSymbols[t],game.lSymbols[game.currentSymbol]]);
+    if(game.lSymbols[t].compareTo2(game.lSymbols[game.currentSymbol],game.targetMin,game.targetMax)){
+      gameHistory.push([game.lSymbols[t],game.lSymbols[game.currentSymbol]]); //placeholder make something that realy saves
       
       game.lSymbols[t].disabled=true;
       game.lSymbols[game.currentSymbol].disabled=true;
