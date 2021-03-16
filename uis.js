@@ -26,7 +26,7 @@ var rangeMax;
 
 function onl(){
 console.log("onload");
-rangeMin=document.getElementById("targetMin");
+/*rangeMin=document.getElementById("targetMin");
 rangeMax=document.getElementById("targetMax");
 
 rangeMin.oninput=function(){
@@ -36,4 +36,31 @@ game.targetMin=this.value;
 rangeMax.oninput=function(){
 game.targetMax=this.value;
 };
+*/
+var gml=document.getElementById("gml");
+
+var targetSlider = document.getElementById('targetSlider');
+
+noUiSlider.create(targetSlider, {
+    start: [1, 3],
+    connect: true,
+    step:1,
+    range: {
+        'min': 0,
+        'max': 3
+    },
+    pips:{
+    mode: 'steps'
+    }
+});
+
+
+targetSlider.noUiSlider.on('set', function(value){
+game.targetMin=parseInt(value[0]);
+game.targetMax=parseInt(value[1]);
+gml.innerHTML="Game mode: "+game.targetMin+" - " + game.targetMax;
+
+}
+);
+
 }
