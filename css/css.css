@@ -1,0 +1,19 @@
+.RGS {
+    border-width: 3px;
+    width:50%;
+}
+
+.grp {
+    padding:5px;
+
+}
+
+.gameBoard {
+    display:inline-block;
+
+
+}
+
+.current{
+    display:inline-block;
+}
