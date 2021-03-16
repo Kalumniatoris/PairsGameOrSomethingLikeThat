@@ -9,7 +9,7 @@ const cc= (p)=>{
   
   p.draw=function(){
     p.background(0);
-    if(game.currentSymbol>0){
+    if(game.currentSymbol>=0){
     game.lSymbols[game.currentSymbol].Sdraw(50,50,50,currentCan);
     }
     else{

@@ -93,7 +93,13 @@ p.drawSymbols=function() {
    p.background(0);
   game.lSymbols.forEach(
     (x, n) => {
-      x.Sdraw((n % game.size) * game.tileSize  * 2 + game.tileSize , Math.floor(n / game.size) * game.tileSize  * 2 + game.tileSize , game.tileSize ,this);
+      var posX=(n % game.size) * game.tileSize  * 2 + game.tileSize ;
+      var posY= Math.floor(n / game.size) * game.tileSize  * 2 + game.tileSize ;
+      x.Sdraw(posX,posY ,game.tileSize ,this);
+      if(game.currentSymbol==n){
+       boardCan.noFill();
+       boardCan.rect(posX-game.tileSize,posY-game.tileSize,2*game.tileSize,2*game.tileSize);
+      }
     }
 
   );
