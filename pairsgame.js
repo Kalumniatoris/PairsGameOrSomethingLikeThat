@@ -68,7 +68,9 @@ p.mouseClicked = function(){
     }
     else{
     if(game.lSymbols[t].compareTo2(game.lSymbols[game.currentSymbol],game.targetMin,game.targetMax)){
-      gameHistory.push([game.lSymbols[t],game.lSymbols[game.currentSymbol]]); //placeholder make something that realy saves
+        let t1=game.lSymbols[t];
+        let t2=game.lSymbols[t];
+      gameHistory.push([[t1.shape,t1.fill,t1.border],[t2.shape,t2.fill,t2.border]]); //placeholder make something that realy saves
       
       game.lSymbols[t].disabled=true;
       game.lSymbols[game.currentSymbol].disabled=true;
