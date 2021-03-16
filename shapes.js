@@ -101,7 +101,9 @@ class Shape {
       
       
       default:
-
+          cins.textStyle(cins.BOLD);
+          cins.textSize(30);
+          cins.text(this.shape,x,y);
 
 
 
