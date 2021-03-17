@@ -52,7 +52,8 @@ noUiSlider.create(targetSlider, {
     },
     pips:{
     mode: 'steps'
-    }
+    },
+    tooltips:[wNumb({decimals: 0}),wNumb({decimals: 0})]
 });
 
 
