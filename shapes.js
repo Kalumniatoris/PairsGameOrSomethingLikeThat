@@ -49,8 +49,19 @@ class Shape {
     cins.fill(game.colors[this.fill]);
      cins.stroke(game.bcolors[this.border]);
      
-    if(game.colors.length==1){cins.fill(game.bcolors[this.border]);}
-    if(game.bcolors.length==1){cins.stroke(game.colors[this.fill]);}
+    if(game.colors.length==1){
+  
+    cins.fill(game.bcolors[this.border]);
+  
+}
+    if(game.bcolors.length==1){
+    
+    let tmpcol=game.colors[this.fill];
+    tmpcol=[(128+tmpcol[0])/2,(128+tmpcol[1])/2,(128+tmpcol[2])/2];
+    cins.stroke(tmpcol);
+    
+    //cins.stroke(game.colors[this.fill]);
+  }
     
     if (this.disabled) {
    cins.fill([10,10,10]);
