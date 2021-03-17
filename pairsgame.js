@@ -8,9 +8,12 @@ var game = {
   annoyingMode:false,
   tileSize:100,
   targetMin:1,
-  targetMax:3
+  targetMax:3,
 };
-
+var isWon=false;
+var startingShapes;
+var startingSize;
+var startingTileSize;
 var gameHistory=[]; //do not use,
 
 
@@ -27,16 +30,20 @@ p.setup = function() {
   generateBoard(game.shapesCount, 6,6, game.size);
 };
 p.draw=function() {
+ 
 
+  if(isWon){p.victory(); }
+  else{
   p.drawSymbols();
   helper(p,false);
-
+  }
+ 
 
 };
 
 p.mouseClicked = function(){
-  //clicked outside of board
-  if(p.mouseX>p.width||p.mouseX<0||p.mouseY>p.height||p.mouseY<0){return;}
+  //clicked outside of board or after victory
+  if(p.mouseX>p.width||p.mouseX<0||p.mouseY>p.height||p.mouseY<0||isWon){return;}
   
   //console.log("clicked");
   
@@ -79,10 +86,16 @@ p.mouseClicked = function(){
       
       if(Math.ceil(Math.sqrt(countLeft()))<game.size){reduceBoard(game.size-1);}
       
+      
       if(game.annoyingMode){
       shuffleA();
       updateColors();
       }
+      
+      if(countLeft()<=1){
+      isWon=true;
+      }
+      
     }
     }}
     
@@ -108,6 +121,32 @@ p.drawSymbols=function() {
 };
 
 
+var a =0;
+p.victory=function(){
+  game.size=startingSize;
+  game.tileSize=startingTileSize;
+
+  p.translate(p.width/2,p.height/2);
+  p.rotate(a);
+  p.translate(-p.width/2,-p.height/2);
+startingShapes.forEach((x,n)=>{x.disabled=false
+
+    var posX=(n % game.size) * game.tileSize  * 2 + game.tileSize ;
+    var posY= Math.floor(n / game.size) * game.tileSize  * 2 + game.tileSize ;
+    x.Sdraw(posX,posY ,game.tileSize ,this);
+    if(game.currentSymbol==n){
+     boardCan.noFill();
+     boardCan.rect(posX-game.tileSize,posY-game.tileSize,2*game.tileSize,2*game.tileSize);
+    }
+  }
+
+);
+
+
+
+
+a+=0.01;
+};
 
 
 
@@ -134,6 +173,11 @@ function generateBoard(shapes, colors,bcolors, sizesq) {
   generateColors(colors);
    generateBcolors(bcolors);
   generateSymbols(vcount, shapes);
+
+  startingShapes=Object.assign(game.lSymbols);
+  
+startingSize=game.size;
+startingTileSize=game.tileSize;
 
 }
 /////that boardCan should be fixed, maybe I should move it into bc or something
@@ -184,9 +228,9 @@ function helper(cv,hints) {
 
   qy =  cv.min(qy, svc - 1);
   qy =  cv.max(0, qy);
-  cv.text(qx, cv.mouseX, cv.mouseY);
-  cv.text(qy, cv.mouseX + 15, cv.mouseY);
-  cv.text(qy * svc + qx, cv.mouseX + 15, cv.mouseY + 10);
+  //cv.text(qx, cv.mouseX, cv.mouseY);
+  //cv.text(qy, cv.mouseX + 15, cv.mouseY);
+  //cv.text(qy * svc + qx, cv.mouseX + 15, cv.mouseY + 10);
   cv.noFill();
   cv.stroke(255, 255, 255);
   cv.square(qx * game.tileSize * 2, qy * game.tileSize * 2, game.tileSize * 2);
