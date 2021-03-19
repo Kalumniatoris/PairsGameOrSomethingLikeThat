@@ -3,6 +3,18 @@ function generateSymbols2(count, shapes = 4) {
     let lSymbols = [];
 
     let isOdd=count%2==1?1:0;
+
+    if((game.colors.length==1||game.bcolors.length==1||game.shapesCount==1)
+        &&
+        (
+        game.targetMin!=3
+        ||
+        game.targetMax!=3
+        )){
+        alert("Please do not set shapes or any of colors to 1 when gamemode isn't set to 3-3 in current version, I mean you can set it but it will not work correctly anyway")
+        mode=3;
+
+    }
   //  for (n = 0; n < count-isOdd; n += 1) {
     while(lSymbols.length+isOdd<count){
 
@@ -27,6 +39,11 @@ function generateSymbols2(count, shapes = 4) {
   }
 
   function generateSymbolsPair(mode){
+
+    if(game.colors.length==1||game.bcolors.length==1||game.shapesCount==1){
+        mode=3;
+
+    }
     //  console.log("generating pair for: "+mode);
       let shap, col,bcol;
       let shap2, col2,bcol2;
