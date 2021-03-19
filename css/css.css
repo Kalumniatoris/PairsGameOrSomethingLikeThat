@@ -4,9 +4,9 @@
 }
 */
 
-@media only screen and (orientation:portrait) {
+@media only screen and (orientation:landscape) {
     .RGS{
-        width:100%;
+        width:50%;
     }
 
     .rginput+.rglp{
