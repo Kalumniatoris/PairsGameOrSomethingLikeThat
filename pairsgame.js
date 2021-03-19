@@ -34,8 +34,10 @@ p.draw=function() {
 
   if(isWon){p.victory(); }
   else{
+    p.background(0);
   p.drawSymbols();
   helper(p,false);
+  
   }
  
 
@@ -105,7 +107,7 @@ p.mouseClicked = function(){
 
 p.drawSymbols=function() {
 
-   p.background(0);
+ //  p.background(0);
   game.lSymbols.forEach(
     (x, n) => {
       var posX=(n % game.size) * game.tileSize  * 2 + game.tileSize ;
@@ -186,7 +188,7 @@ function generateColors(count) {
   let colors = [];
 //  let bcolors = [];
   for (n = 0; n < count; n += 1) {
-    colors.push([Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255))]);
+    colors.push([Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)),256]);
   //  bcolors.push([Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255))]);
   }
 
@@ -197,7 +199,7 @@ function generateColors(count) {
 function generateBcolors(count) {
   let bcolors = [];
   for (n = 0; n < count; n += 1) {
-   bcolors.push([Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255))]);
+   bcolors.push([Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)),256]);
   }
 
   game.bcolors = bcolors;

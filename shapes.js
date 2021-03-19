@@ -46,9 +46,14 @@ class Shape {
 
 
   Sdraw(x, y, s,cins) {
+    if(isWon){game.bcolors[this.border][3]=12
+      game.colors[this.fill][3]=50
+    }
     cins.fill(game.colors[this.fill]);
      cins.stroke(game.bcolors[this.border]);
      
+   
+
     if(game.colors.length==1){
   
     cins.fill(game.bcolors[this.border]);
