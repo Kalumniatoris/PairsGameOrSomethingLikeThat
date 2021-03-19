@@ -16,10 +16,67 @@
 
 .current{
     display:inline-block;
+    border-width: 3px;
+    border-color: #95e0d0;
 }
 
 .slider{
     margin-top:5px;
     margin-bottom:5px;
+    
+    display: block;
+    width: 75%;
+    float:right;
+}
 
+.button{
+    
+  font-size: 20px;
+  
+  text-shadow:1px1px #888;
+    padding: 15px 32px;
+    background-color: #95e0d0;
+    border-radius: 10%;
+    color: black;
+    display: inline-block;
+    border: none;
+    
+    box-shadow: 0 5px #999;
+
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    font-weight:800;
+}
+.button:hover{
+    background-color: #85d0c0;
+}
+
+.button:active {
+    background-color: #75c0b0;
+    box-shadow: 0 1px #666;
+    transform: translateY(4px);
+  }
+
+body{
+    background-color: rgb(19, 15, 15);
+    color:blanchedalmond;
+}
+
+.rgfin{
+    margin: 5pt;
+}
+.rglp{
+    font-weight:800;
+    font-size: 20px;
+    width:33%;
+   padding: 12px 0 0 0;
+    display: inline-block;
+}
+.rginput{
+    
+    font-weight:800;
+    font-size: 20px;
+    width:25%;
+  
 }

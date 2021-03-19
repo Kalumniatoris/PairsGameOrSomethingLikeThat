@@ -34,22 +34,24 @@
 
 <hr>
 <div id="randomGameSettings" class="RGS grp">
-<fieldset>
+<fieldset class="fsRG">
 <legend>Random game</legend>
-<label>shapes: </label><input type="number" id="numshapes" min=2 max=7 value=5><br>
-<label>size: </label><input type="number" id="numsize" min=2 max=15 value=5><br>
-<label>colors: </label><input type="number" id="numcolors" min=2 value=6><label>bcolors: </label><input type="number" id="numBcolors" min=2 value=6>
 
-<div id="targetSlider" class="slider"></div>
+<div class="rgfin"><label class="rglp">Shapes: </label><input type="number" id="numshapes" min=2 max=7 value=5 class="rginput"></div>
+<div  class="rgfin"><label class="rglp">Size: </label><input type="number" id="numsize" min=2 max=15 value=5 class="rginput"></div>
+<div  class="rgfin"><label class="rglp">Colors: </label><input type="number" id="numcolors" min=2 value=6 class="rginput"></div>
+<div  class="rgfin"><label class="rglp">Border colors: </label><input type="number" id="numBcolors" min=2 value=6  class="rginput"></div>
 
-<button id="generate" onclick="generate()">Generate</button>
+<div  class="rgfin"><label class="rglp"> Game mode: </label><div id="targetSlider" class="slider"></div></div>
+
+<button id="generate" onclick="generate()" class="button generateButton">Generate</button>
 </fieldset>
 </div>
 
 <div id="srtab" class="grp">
-<button id="shuffle" onclick="shuffleA()">Shuffle</button>
-<button id="upColors" onclick="updateColors()">Randomize colors</button>
-<button id="annoying mode" onclick="toggleAnnoyingMode()">Toggle annoying mode</button>
+<button id="shuffle" onclick="shuffleA()" class="button shuffleButton">Shuffle</button>
+<button id="upColors" onclick="updateColors()" class="button rcolorsBuddon">Randomize colors</button>
+<button id="annoying mode" onclick="toggleAnnoyingMode()" class="button annoyingButton">Toggle annoying mode</button>
 
 </div>
 <div id="gamemodeSlider" class="grp">
