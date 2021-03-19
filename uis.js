@@ -11,14 +11,7 @@ function generate() {
 
 }
 
-function shuffleA(){
-  shuffle(game.lSymbols);
-}
 
-function toggleAnnoyingMode(){
-  game.annoyingMode=!game.annoyingMode;
-
-}
 
 
 
@@ -50,9 +43,7 @@ noUiSlider.create(targetSlider, {
         'min': 0,
         'max': 3
     },
-    pips:{
-    mode: 'steps'
-    },
+  
     tooltips:[wNumb({decimals: 0}),wNumb({decimals: 0})]
 });
 

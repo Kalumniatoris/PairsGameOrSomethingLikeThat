@@ -77,8 +77,8 @@ p.mouseClicked = function(){
     if(game.lSymbols[t].compareTo2(game.lSymbols[game.currentSymbol],game.targetMin,game.targetMax)){
         let t1=game.lSymbols[t];
         let t2=game.lSymbols[t];
-      gameHistory.push([[t1.shape,t1.fill,t1.border],[t2.shape,t2.fill,t2.border]]); //placeholder make something that realy saves
-      
+      gameHistory.push([[t1.shape,t1.fill,t1.border],[t2.shape,t2.fill,t2.border]]); 
+
       game.lSymbols[t].disabled=true;
       game.lSymbols[game.currentSymbol].disabled=true;
   //    console.log("pair");
@@ -172,8 +172,9 @@ function generateBoard(shapes, colors,bcolors, sizesq) {
   //
   generateColors(colors);
    generateBcolors(bcolors);
-  generateSymbols(vcount, shapes);
-
+ // generateSymbols(vcount, shapes);
+  
+  generateSymbols2(vcount, shapes);
   startingShapes=Object.assign(game.lSymbols);
   
 startingSize=game.size;
