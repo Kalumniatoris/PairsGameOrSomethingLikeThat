@@ -1,4 +1,4 @@
-function generateSymbols2(count, shapes = 4) {
+function generateSymbols(count, shapes = 4) {
 
   let lSymbols = [];
 
@@ -212,15 +212,14 @@ function generateBoard(shapes, colors, bcolors, sizesq) {
   game.shapesCount = shapes;
   //game.colorsCount=colors;
   game.size = sizesq;
-  console.log("Generating board " + [shapes, colors, game.size]);
+  console.log("Generating board " + [shapes, colors,bcolors, game.size]);
   let vcount = game.size * game.size;
   updateTileSize(vcount);
   //
   generateColors(colors);
   generateBcolors(bcolors);
-  // generateSymbols(vcount, shapes);
 
-  generateSymbols2(vcount, shapes);
+  generateSymbols(vcount, shapes);
   startingShapes = Object.assign(game.lSymbols);
 
   startingSize = game.size;

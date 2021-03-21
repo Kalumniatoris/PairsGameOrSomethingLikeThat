@@ -26,7 +26,7 @@ const sh = (p) => {
     p.mouseWheel= function(e){
         
         if(p.mouseX<p.width&&p.mouseX>0&&p.mouseY<p.height&&p.mouseY>0)
-        if(sc+e.delta<=0){
+        if(sc+e.delta<=0 &&sc+e.delta>-50*gameHistory.length){
         sc+=e.delta}
     
     }

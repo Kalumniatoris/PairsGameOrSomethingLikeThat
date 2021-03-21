@@ -13,31 +13,47 @@ function shuffle(a) {
   return a;
 }
 
-
 function compareShapes(a, b) {
-  if(!a.disabled && !b.disabled) { return a.shape - b.shape; }
-  else {
+  if (!a.disabled && !b.disabled) {
+    return a.shape - b.shape;
+  } else {
     return a.disabled - b.disabled;
   }
-
 }
-
 
 function updateTileSize(tilesCount) {
-  game.tileSize = (can / Math.floor(Math.sqrt(tilesCount))) / 2;
-
+  game.tileSize = can / Math.floor(Math.sqrt(tilesCount)) / 2;
 }
-
 
 function updateColors() {
-  game.colors.forEach((x, n) => { game.colors[n] = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]; });
+  game.colors.forEach((x, n) => {
+    game.colors[n] = [
+      Math.floor(Math.random() * 255),
+      Math.floor(Math.random() * 255),
+      Math.floor(Math.random() * 255),
+    ];
+  });
 
-  game.bcolors.forEach((x, n) => { game.bcolors[n] = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]; });
+  game.bcolors.forEach((x, n) => {
+    game.bcolors[n] = [
+      Math.floor(Math.random() * 255),
+      Math.floor(Math.random() * 255),
+      Math.floor(Math.random() * 255),
+    ];
+  });
 }
 
-function countDisabled() { return game.lSymbols.reduce(function (pr, cr, ind, ar) { return pr + ar[ind].disabled; }, 0); }
+function countDisabled() {
+  return game.lSymbols.reduce(function (pr, cr, ind, ar) {
+    return pr + ar[ind].disabled;
+  }, 0);
+}
 
-function countLeft() { return game.lSymbols.reduce(function (pr, cr, ind, ar) { return pr + !ar[ind].disabled; }, 0); }
+function countLeft() {
+  return game.lSymbols.reduce(function (pr, cr, ind, ar) {
+    return pr + !ar[ind].disabled;
+  }, 0);
+}
 
 function reduceBoard(toSize) {
   let size2 = toSize * toSize;
@@ -48,16 +64,13 @@ function reduceBoard(toSize) {
   //  shuffleA();
 }
 
-
 function shuffleA() {
   shuffle(game.lSymbols);
 }
 
 function toggleAnnoyingMode() {
   game.annoyingMode = !game.annoyingMode;
-
 }
-
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);

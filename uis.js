@@ -15,7 +15,7 @@ function generate() {
 
 
 function onl() {
-    console.log("onload");
+   // console.log("onload");
     var gml = document.getElementById("gml");
 
     var targetSlider = document.getElementById('targetSlider');
@@ -36,7 +36,7 @@ function onl() {
     targetSlider.noUiSlider.on('set', function (value) {
         game.targetMin = parseInt(value[0]);
         game.targetMax = parseInt(value[1]);
-        gml.innerHTML = "Game mode: " + game.targetMin + " - " + game.targetMax;
+      //  gml.innerHTML = "Game mode: " + game.targetMin + " - " + game.targetMax;
 
     }
     );

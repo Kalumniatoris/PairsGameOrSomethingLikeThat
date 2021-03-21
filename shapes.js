@@ -27,8 +27,8 @@ class Shape {
       }
       //t = (this.shape == target.shape) + (this.fill == target.fill) + (this.border == target.border);
 
-      console.log("targets: " + t + " " + s + " " + mx);
-      console.log(t >= s && t <= mx);
+     // console.log("targets: " + t + " " + s + " " + mx);
+     // console.log(t >= s && t <= mx);
       return t >= s && t <= mx;
     } catch (e) {
       return false;
@@ -36,9 +36,10 @@ class Shape {
   }
 
   Sdraw(x, y, s, canvas,border=this.border,fill=this.fill,shape=this.shape) {
-    if(isWon) {
-      game.bcolors[border][3] = 12;
-      game.colors[fill][3] = 50;
+    if(isWon &&  game.bcolors[border][3]!=50) {
+      
+      game.bcolors[border][3] =50;
+      game.colors[fill][3] =100;
     }
     canvas.fill(game.colors[fill]);
     canvas.stroke(game.bcolors[border]);
