@@ -4,7 +4,7 @@
 }
 */
 
-@media only screen and (min-width:1000px) and (orientation:landscape) {
+@media only screen and (min-width:1200px) and (orientation:landscape) {
     .RGS{
         /* width: calc("100% - 750px"); */
         break-inside: avoid-column;
