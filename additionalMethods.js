@@ -35,9 +35,9 @@ function updateColors() {
   game.bcolors.forEach((x, n) => { game.bcolors[n] = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]; });
 }
 
-function countDisabled() { return game.lSymbols.reduce(function (pr, cr, ins, ar) { return pr + ar[ins].disabled; }, 0); }
+function countDisabled() { return game.lSymbols.reduce(function (pr, cr, ind, ar) { return pr + ar[ind].disabled; }, 0); }
 
-function countLeft() { return game.lSymbols.reduce(function (pr, cr, ins, ar) { return pr + !ar[ins].disabled; }, 0); }
+function countLeft() { return game.lSymbols.reduce(function (pr, cr, ind, ar) { return pr + !ar[ind].disabled; }, 0); }
 
 function reduceBoard(toSize) {
   let size2 = toSize * toSize;

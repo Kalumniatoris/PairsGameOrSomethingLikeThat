@@ -7,8 +7,9 @@ function generate() {
     var ccolors = document.getElementById("numcolors").value;
     var bcolors = document.getElementById("numBcolors").value;
     isWon = false;
-    generateBoard(cshapes, ccolors, bcolors, csize);
 
+    generateBoard(cshapes, ccolors, bcolors, csize);
+    gameHistory=[];
 }
 
 

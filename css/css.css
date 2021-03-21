@@ -93,3 +93,9 @@ body{
     width:25%;
   
 }
+
+
+.history{
+    pointer-events:none
+
+}

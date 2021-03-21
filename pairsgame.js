@@ -28,19 +28,22 @@ const bc = (p) => {
     // canvas.parent("gameBoard");
     p.background([123, 55, 0]);
     generateBoard(game.shapesCount, 6, 6, game.size);
-  };
-  p.draw = function () {
 
+  };
+
+  
+  p.draw = function () {
+    
 
     if(isWon) { p.victory(); }
+
     else {
       p.background(0);
       p.drawSymbols();
       cursorFrame(p);
 
     }
-
-
+    
   };
 
   p.mouseClicked = function () {
@@ -78,7 +81,7 @@ const bc = (p) => {
       else {
         if(game.lSymbols[t].compareTo2(game.lSymbols[game.currentSymbol], game.targetMin, game.targetMax)) {
           let t1 = game.lSymbols[t];
-          let t2 = game.lSymbols[t];
+          let t2 = game.lSymbols[game.currentSymbol];
           gameHistory.push([[t1.shape, t1.fill, t1.border], [t2.shape, t2.fill, t2.border]]);
 
           game.lSymbols[t].disabled = true;
