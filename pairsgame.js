@@ -20,7 +20,7 @@ var gameHistory=[]; //do not use,
 const can = 600;
 var canvas;
 var ccs = 100;
-
+var showHints=false;
 const bc = (p) =>{
 
 p.setup = function() {
@@ -36,7 +36,7 @@ p.draw=function() {
   else{
     p.background(0);
   p.drawSymbols();
-  helper(p,false);
+  cursorFrame(p);
   
   }
  
@@ -163,61 +163,13 @@ function updateTileSize(tilesCount){
  
 }
 
-function generateBoard(shapes, colors,bcolors, sizesq) {
-  game.currentSymbol=-1;
-  game.shapesCount=shapes;
-  //game.colorsCount=colors;
-  game.size=sizesq;
-  console.log("Generating board " + [shapes, colors, game.size]);
-  let vcount = game.size * game.size;
-  updateTileSize(vcount);
-  //
-  generateColors(colors);
-   generateBcolors(bcolors);
- // generateSymbols(vcount, shapes);
-  
-  generateSymbols2(vcount, shapes);
-  startingShapes=Object.assign(game.lSymbols);
-  
-startingSize=game.size;
-startingTileSize=game.tileSize;
-
-}
-/////that boardCan should be fixed, maybe I should move it into bc or something
-function generateColors(count) {
-  let colors = [];
-//  let bcolors = [];
-  for (n = 0; n < count; n += 1) {
-    colors.push([Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)),256]);
-  //  bcolors.push([Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255))]);
-  }
-
-  game.colors = colors;
-//  game.bcolors = bcolors;
-}
-
-function generateBcolors(count) {
-  let bcolors = [];
-  for (n = 0; n < count; n += 1) {
-   bcolors.push([Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)),256]);
-  }
-
-  game.bcolors = bcolors;
-}
-
-
-function generateSymbols(count, shapes = 4) {
-  let lSymbols = [];
-  for (n = 0; n < count; n += 1) {
-    lSymbols.push(new Shape(Math.floor(boardCan.random(shapes)), Math.floor(boardCan.random(game.colors.length)), Math.floor(boardCan.random(game.bcolors.length))));
-  }
-  game.lSymbols = lSymbols;
-}
 
 
 
 
-function helper(cv,hints) {
+function cursorFrame(cv) {
+
+  if( cv.mouseX>cv.width|| cv.mouseX<0|| cv.mouseY> cv.height|| cv.mouseY<0){return;}
   cv.strokeWeight(1);
   cv.noStroke();
   cv.fill(255);
@@ -238,18 +190,5 @@ function helper(cv,hints) {
   cv.stroke(255, 255, 255);
   cv.square(qx * game.tileSize * 2, qy * game.tileSize * 2, game.tileSize * 2);
 
-      var t = qy * svc + qx;
-    t =  cv.min(vcount - 1, t);
-    t =  cv.max(0, t);
-    
-  
 
-
-
-  if (hints) {
-
-    game.lSymbols.forEach((x, n) => { if (x.compareTo(game.lSymbols[t]))     {  cv.noStroke();  cv.fill(0, 150, 0);    cv.square(n % svc * game.tileSize * 2, Math.floor(n / svc) * game.tileSize * 2, 5);      } });
-    game.lSymbols.forEach((x, n) => { if (x.compareTo2(game.lSymbols[t], 2)) {  cv.noStroke();  cv.fill(150, 150, 0);  cv.square(n % svc * game.tileSize * 2 + 10, Math.floor(n / svc) * game.tileSize * 2, 5); } });
-    game.lSymbols.forEach((x, n) => { if (x.compareTo2(game.lSymbols[t], 3)) {  cv.noStroke();  cv.fill(0, 150, 150);  cv.square(n % svc * game.tileSize * 2 + 20, Math.floor(n / svc) * game.tileSize * 2, 5); } });
-  }
 }

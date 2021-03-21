@@ -178,3 +178,59 @@ function generateSymbols2(count, shapes = 4) {
     return Math.floor(Math.random()*game.bcolors.length);
  
    }
+
+   /////that boardCan should be fixed, maybe I should move it into bc or something
+function generateColors(count) {
+    let colors = [];
+  //  let bcolors = [];
+    for (n = 0; n < count; n += 1) {
+      colors.push([Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)),256]);
+    //  bcolors.push([Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255))]);
+    }
+  
+    game.colors = colors;
+  //  game.bcolors = bcolors;
+  }
+  
+  function generateBcolors(count) {
+    let bcolors = [];
+    for (n = 0; n < count; n += 1) {
+     bcolors.push([Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)), Math.floor(boardCan.random(255)),256]);
+    }
+  
+    game.bcolors = bcolors;
+  }
+  
+  
+
+  function generateSymbolsRandom(count, shapes = 4) {
+    let lSymbols = [];
+    for (n = 0; n < count; n += 1) {
+      lSymbols.push(new Shape(Math.floor(boardCan.random(shapes)), Math.floor(boardCan.random(game.colors.length)), Math.floor(boardCan.random(game.bcolors.length))));
+    }
+    game.lSymbols = lSymbols;
+  }
+  
+
+  function generateBoard(shapes, colors,bcolors, sizesq) {
+    game.currentSymbol=-1;
+    game.shapesCount=shapes;
+    //game.colorsCount=colors;
+    game.size=sizesq;
+    console.log("Generating board " + [shapes, colors, game.size]);
+    let vcount = game.size * game.size;
+    updateTileSize(vcount);
+    //
+    generateColors(colors);
+     generateBcolors(bcolors);
+   // generateSymbols(vcount, shapes);
+    
+    generateSymbols2(vcount, shapes);
+    startingShapes=Object.assign(game.lSymbols);
+    
+  startingSize=game.size;
+  startingTileSize=game.tileSize;
+  
+  }
+  
+  

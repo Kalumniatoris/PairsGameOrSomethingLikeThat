@@ -27,12 +27,13 @@ class Shape {
   }
 
   compareTo2(target, s,mx) {
+    let tofix=0; //1 to ignore 1
     try {
       if (this.disabled || target.disabled) { return false; }
       var t=0;
-      if(game.colors.length>1 && (this.fill == target.fill)){t+=1;}
-      if(game.shapesCount>1 && (this.shape == target.shape)){t+=1;}
-      if(game.bcolors.length>1 && (this.border == target.border)){t+=1;}
+      if(game.colors.length>tofix && (this.fill == target.fill)){t+=1;}
+      if(game.shapesCount>tofix && (this.shape == target.shape)){t+=1;}
+      if(game.bcolors.length>tofix && (this.border == target.border)){t+=1;}
       //t = (this.shape == target.shape) + (this.fill == target.fill) + (this.border == target.border);
       
       console.log("targets: "+t+" "+s+" "+mx);
@@ -45,7 +46,7 @@ class Shape {
   }
 
 
-  Sdraw(x, y, s,cins) {
+  Sdraw(x, y, s,cins,forceShow=false) {
     if(isWon){game.bcolors[this.border][3]=12
       game.colors[this.fill][3]=50
     }
@@ -68,7 +69,7 @@ class Shape {
     //cins.stroke(game.colors[this.fill]);
   }
     
-    if (this.disabled) {
+    if (this.disabled && !forceShow) {
    cins.fill([10,10,10]);
       cins.stroke([10,10,10]);
     }
