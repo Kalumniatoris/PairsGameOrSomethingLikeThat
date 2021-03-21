@@ -34,14 +34,22 @@
 </head>
 
 <body onload="onl()">
-  <br><br>
+
+<div class="c1">
   <div id="gameBoard" class="gameBoard"></div>
 
-  <div id="current" class="current"></div>
+  <div id="srtab" class="grp">
+    <button id="shuffle" onclick="shuffleA()" class="button shuffleButton">Shuffle</button>
+    <button id="upColors" onclick="updateColors()" class="button rcolorsBuddon">Randomize colors</button>
+    <button id="annoying mode" onclick="toggleAnnoyingMode()" class="button annoyingButton">Toggle annoying
+      mode</button>
+  </div>
+</div>
 
-  <hr>
-  <div id="randomGameSettings" class="RGS grp">
-    <fieldset class="fsRG">
+  <!---->
+<div class="c2">
+  <div id="randomGameSettings" class="RGS">
+    <fieldset class="">
       <legend>Random game</legend>
 
       <div class="rgfin"><label class="rglp">Shapes: </label><input type="number" id="numshapes" min=2 max=7 value=5
@@ -61,31 +69,20 @@
     </fieldset>
   </div>
 
-  <div id="srtab" class="grp">
-    <button id="shuffle" onclick="shuffleA()" class="button shuffleButton">Shuffle</button>
-    <button id="upColors" onclick="updateColors()" class="button rcolorsBuddon">Randomize colors</button>
-    <button id="annoying mode" onclick="toggleAnnoyingMode()" class="button annoyingButton">Toggle annoying
-      mode</button>
-
-  </div>
+  <!--
   <div id="gamemodeSlider" class="grp">
     <fieldset>
 
       <legend id="gml">Game mode: 1 - 3</legend>
-      <!--<form  oninput="target.value=targetMin.value+' - '+targetMax.value">
-<label for="targetMin">Min:</label><input type="range" id="targetMin" min=0 max=3 value=1>
 
-<label for="targetMax">Max:</label><input type="range" id="targetMax" min=0 max=3 value=3>
-<output name="target" for="targetMin targetMax">1-3</output>
-
-
-<form>
--->
 
     </fieldset>
-  </div>
+  </div>-->
 
   <div id="history" class="history"></div>
+  <div id="current" class="current"></div>
+  </div>
 </body>
+
 
 </html>

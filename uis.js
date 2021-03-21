@@ -14,24 +14,8 @@ function generate() {
 
 
 
-
-
-var rangeMin;
-var rangeMax;
-
 function onl() {
     console.log("onload");
-    /*rangeMin=document.getElementById("targetMin");
-    rangeMax=document.getElementById("targetMax");
-    
-    rangeMin.oninput=function(){
-    game.targetMin=this.value;
-    };
-    
-    rangeMax.oninput=function(){
-    game.targetMax=this.value;
-    };
-    */
     var gml = document.getElementById("gml");
 
     var targetSlider = document.getElementById('targetSlider');

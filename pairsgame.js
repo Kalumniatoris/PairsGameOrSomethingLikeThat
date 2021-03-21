@@ -14,49 +14,41 @@ var isWon = false;
 var startingShapes;
 var startingSize;
 var startingTileSize;
-var gameHistory = []; //do not use,
-
+var gameHistory = [];
 
 const can = 600;
-var canvas;
-var ccs = 100;
 var showHints = false;
 const bc = (p) => {
-
   p.setup = function () {
     p.createCanvas(can, can);
-    // canvas.parent("gameBoard");
     p.background([123, 55, 0]);
     generateBoard(game.shapesCount, 6, 6, game.size);
-
   };
 
-  
   p.draw = function () {
-    
-
-    if(isWon) { p.victory(); }
-
-    else {
+    if (isWon) {
+      p.victory();
+    } else {
       p.background(0);
       p.drawSymbols();
       cursorFrame(p);
-
     }
-    
   };
 
   p.mouseClicked = function () {
     //clicked outside of board or after victory
-    if(p.mouseX > p.width || p.mouseX < 0 || p.mouseY > p.height || p.mouseY < 0 || isWon) { return; }
+    if (
+      p.mouseX > p.width ||
+      p.mouseX < 0 ||
+      p.mouseY > p.height ||
+      p.mouseY < 0 ||
+      isWon
+    ) {
+      return;
+    }
 
-    //console.log("clicked");
-
-
-    //let vcount = game.size * game.size;
-    //var svc = Math.sqrt(vcount);
-    let qx = Math.floor((p.mouseX) / (game.tileSize * 2));
-    let qy = Math.floor((p.mouseY) / (game.tileSize * 2));
+    let qx = Math.floor(p.mouseX / (game.tileSize * 2));
+    let qy = Math.floor(p.mouseY / (game.tileSize * 2));
 
     qx = p.min(qx, game.size);
     qx = p.max(0, qx);
@@ -68,64 +60,64 @@ const bc = (p) => {
     t = p.min(game.size * game.size - 1, t);
     t = p.max(0, t);
 
-    // console.log("t: "+t);
-    if(!game.lSymbols[t].disabled) {
-      if(game.currentSymbol == -1) {
-        //    console.log("selecting: ");
+    if (!game.lSymbols[t].disabled) {
+      if (game.currentSymbol == -1) {
         game.currentSymbol = t;
-      }
-      else if(game.currentSymbol == t) {
-        //  console.log("deselecting");
+      } else if (game.currentSymbol == t) {
         game.currentSymbol = -1;
-      }
-      else {
-        if(game.lSymbols[t].compareTo2(game.lSymbols[game.currentSymbol], game.targetMin, game.targetMax)) {
+      } else {
+        if (
+          game.lSymbols[t].compareTo(
+            game.lSymbols[game.currentSymbol],
+            game.targetMin,
+            game.targetMax
+          )
+        ) {
           let t1 = game.lSymbols[t];
           let t2 = game.lSymbols[game.currentSymbol];
-          gameHistory.push([[t1.shape, t1.fill, t1.border], [t2.shape, t2.fill, t2.border]]);
+          gameHistory.push([
+            [t1.shape, t1.fill, t1.border],
+            [t2.shape, t2.fill, t2.border],
+          ]);
 
           game.lSymbols[t].disabled = true;
           game.lSymbols[game.currentSymbol].disabled = true;
-          //    console.log("pair");
+
           game.currentSymbol = -1;
 
-          if(Math.ceil(Math.sqrt(countLeft())) < game.size) { reduceBoard(game.size - 1); }
+          if (Math.ceil(Math.sqrt(countLeft())) < game.size) {
+            reduceBoard(game.size - 1);
+          }
 
-
-          if(game.annoyingMode) {
+          if (game.annoyingMode) {
             shuffleA();
             updateColors();
           }
 
-          if(countLeft() <= 1) {
+          if (countLeft() <= 1) {
             isWon = true;
           }
-
         }
       }
     }
-
   };
-
-
 
   p.drawSymbols = function () {
-
-    //  p.background(0);
-    game.lSymbols.forEach(
-      (x, n) => {
-        var posX = (n % game.size) * game.tileSize * 2 + game.tileSize;
-        var posY = Math.floor(n / game.size) * game.tileSize * 2 + game.tileSize;
-        x.Sdraw(posX, posY, game.tileSize, this);
-        if(game.currentSymbol == n) {
-          boardCan.noFill();
-          boardCan.rect(posX - game.tileSize, posY - game.tileSize, 2 * game.tileSize, 2 * game.tileSize);
-        }
+    game.lSymbols.forEach((x, n) => {
+      var posX = (n % game.size) * game.tileSize * 2 + game.tileSize;
+      var posY = Math.floor(n / game.size) * game.tileSize * 2 + game.tileSize;
+      x.Sdraw(posX, posY, game.tileSize, this);
+      if (game.currentSymbol == n) {
+        boardCan.noFill();
+        boardCan.rect(
+          posX - game.tileSize,
+          posY - game.tileSize,
+          2 * game.tileSize,
+          2 * game.tileSize
+        );
       }
-
-    );
+    });
   };
-
 
   var a = 0;
   p.victory = function () {
@@ -136,59 +128,53 @@ const bc = (p) => {
     p.rotate(a);
     p.translate(-p.width / 2, -p.height / 2);
     startingShapes.forEach((x, n) => {
-      x.disabled = false
+      x.disabled = false;
 
       var posX = (n % game.size) * game.tileSize * 2 + game.tileSize;
       var posY = Math.floor(n / game.size) * game.tileSize * 2 + game.tileSize;
       x.Sdraw(posX, posY, game.tileSize, this);
-      if(game.currentSymbol == n) {
+      if (game.currentSymbol == n) {
         boardCan.noFill();
-        boardCan.rect(posX - game.tileSize, posY - game.tileSize, 2 * game.tileSize, 2 * game.tileSize);
+        boardCan.rect(
+          posX - game.tileSize,
+          posY - game.tileSize,
+          2 * game.tileSize,
+          2 * game.tileSize
+        );
       }
-    }
-
-    );
-
-
-
+    });
 
     a += 0.01;
   };
-
-
-
 };
 
-let boardCan = new p5(bc, 'gameBoard');
+let boardCan = new p5(bc, "gameBoard");
 
 //////
 
-
-
-
-
 function cursorFrame(cv) {
-
-  if(cv.mouseX > cv.width || cv.mouseX < 0 || cv.mouseY > cv.height || cv.mouseY < 0) { return; }
+  if (
+    cv.mouseX > cv.width ||
+    cv.mouseX < 0 ||
+    cv.mouseY > cv.height ||
+    cv.mouseY < 0
+  ) {
+    return;
+  }
   cv.strokeWeight(1);
   cv.noStroke();
   cv.fill(255);
   let vcount = game.size * game.size;
   var svc = Math.sqrt(vcount);
-  let qx = Math.floor((cv.mouseX) / (game.tileSize * 2));
-  let qy = Math.floor((cv.mouseY) / (game.tileSize * 2));
+  let qx = Math.floor(cv.mouseX / (game.tileSize * 2));
+  let qy = Math.floor(cv.mouseY / (game.tileSize * 2));
 
   qx = cv.min(qx, svc);
   qx = cv.max(0, qx);
 
   qy = cv.min(qy, svc - 1);
   qy = cv.max(0, qy);
-  //cv.text(qx, cv.mouseX, cv.mouseY);
-  //cv.text(qy, cv.mouseX + 15, cv.mouseY);
-  //cv.text(qy * svc + qx, cv.mouseX + 15, cv.mouseY + 10);
   cv.noFill();
   cv.stroke(255, 255, 255);
   cv.square(qx * game.tileSize * 2, qy * game.tileSize * 2, game.tileSize * 2);
-
-
 }

@@ -8,25 +8,8 @@ class Shape {
     this.disabled = false;
   }
 
-  compareTo(target) {
-    /*try {
-      var thd = this.disabled;
-      var tad = target.disabled;
 
-
-      if(thd || tad) { return false; }
-      return (this.shape == target.shape || this.fill == target.fill || this.border == target.border);
-    }
-    catch (e) {
-      console.log(this);
-      console.log(target);
-      return false;
-    }*/
-
-    return this.compareTo2(target, 1, 3);
-  }
-
-  compareTo2(target, s, mx) {
+  compareTo(target, s, mx) {
     let tofix = 0; //1 to ignore 1
     try {
       if(this.disabled || target.disabled) {

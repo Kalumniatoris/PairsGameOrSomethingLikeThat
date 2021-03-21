@@ -4,26 +4,43 @@
 }
 */
 
-@media only screen and (orientation:landscape) {
+@media only screen and (min-width:1000px) {
     .RGS{
-        width:50%;
+        /* width: calc("100% - 750px"); */
+        break-inside: avoid-column;
+    } 
+
+   
+
+
+
+    body{
+        column-count:2;
+        
+        column-width: auto;
     }
 
-    .rginput+.rglp{
-    
-        width:70%;
-      
+    .c1{
+        width:600px;
+    }
+    .c2{
+        float:right;
+        width:calc("100% - 600px");
     }
 }
+
+.RGS{width:100%}
 
 .grp {
     padding:5px;
 
 }
-
+.c1{
+    width:600px;
+}
 .gameBoard {
     display:inline-block;
-
+   /* width:600px;*/
 
 }
 
@@ -82,15 +99,16 @@ body{
 .rglp{
     font-weight:800;
     font-size: 20px;
-    width:33%;
+  /*  width:33%;*/
    padding: 12px 0 0 0;
     display: inline-block;
 }
+
 .rginput{
     
     font-weight:800;
     font-size: 20px;
-    width:25%;
+ /*   width:25%;*/
   
 }
 

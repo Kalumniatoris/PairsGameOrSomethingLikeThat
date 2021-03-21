@@ -16,6 +16,7 @@ const sh = (p) => {
 
             let t0=x[0];
             let t1=x[1];
+
             shape.Sdraw(d,i*2*d+d+sc,d,p,t0[2],t0[1],t0[0]);
             shape.Sdraw(3*d,i*2*d+d+sc,d,p,t1[2],t1[1],t1[0]);
         })
@@ -23,9 +24,10 @@ const sh = (p) => {
     };
 
     p.mouseWheel= function(e){
-        console.log(e);
+        
         if(p.mouseX<p.width&&p.mouseX>0&&p.mouseY<p.height&&p.mouseY>0)
-        sc+=e.delta
+        if(sc+e.delta<=0){
+        sc+=e.delta}
     
     }
   
