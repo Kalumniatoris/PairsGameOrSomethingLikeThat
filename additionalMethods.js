@@ -15,7 +15,7 @@ function shuffle(a) {
 
 function compareShapes(a, b) {
   if (!a.disabled && !b.disabled) {
-    return a.shape - b.shape;
+    return Math.random()-0.5;
   } else {
     return a.disabled - b.disabled;
   }

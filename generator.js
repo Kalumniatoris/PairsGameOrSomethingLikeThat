@@ -225,6 +225,6 @@ function generateBoard(shapes, colors, bcolors, sizesq) {
 
   startingSize = game.size;
   startingTileSize = game.tileSize;
-
+  buffer=boardCan.createGraphics(can,can);
 }
 
