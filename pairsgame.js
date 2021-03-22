@@ -1,3 +1,4 @@
+
 var game = {
   shapesCount: 5,
   size: 5,
@@ -18,18 +19,29 @@ var gameHistory = [];
 
 const can = 600;
 var showHints = false;
+var buffer;
+var cs=true;
 const bc = (p) => {
   p.setup = function () {
     p.createCanvas(can, can);
-    p.background([123, 55, 0]);
+    buffer=p.createGraphics(can,can);
+    //buffer.background(0);
+   p.background([123, 55, 0]);
     generateBoard(game.shapesCount, 6, 6, game.size);
   };
 
   p.draw = function () {
+    p.image(buffer,0,0);
+   // buffer.background(0);
     if (isWon) {
+      if(cs){
+        game.colors.forEach((x)=>{x[3]=50});
+        game.bcolors.forEach((x)=>{x[3]=20});
+        cs=false;
+      }
       p.victory();
     } else {
-      p.background(0);
+      buffer.background(0);
       p.drawSymbols();
       cursorFrame(p);
     }
@@ -96,6 +108,7 @@ const bc = (p) => {
 
           if (countLeft() <= 1) {
             isWon = true;
+            cs=true;
           }
         }
       }
@@ -119,23 +132,24 @@ const bc = (p) => {
     });
   };
 
-  var a = 0;
+ //var a = 0.1;
+  var a=p.PI/30;
   p.victory = function () {
     game.size = startingSize;
     game.tileSize = startingTileSize;
 
-    p.translate(p.width / 2, p.height / 2);
-    p.rotate(a);
-    p.translate(-p.width / 2, -p.height / 2);
+    buffer.translate(buffer.width / 2, buffer.height / 2);
+    buffer.rotate(a);
+    buffer.translate(-buffer.width / 2, -buffer.height / 2);
     startingShapes.forEach((x, n) => {
       x.disabled = false;
 
       var posX = (n % game.size) * game.tileSize * 2 + game.tileSize;
       var posY = Math.floor(n / game.size) * game.tileSize * 2 + game.tileSize;
-      x.Sdraw(posX, posY, game.tileSize, this);
+      x.Sdraw(posX, posY, game.tileSize, buffer);
       if (game.currentSymbol == n) {
-        boardCan.noFill();
-        boardCan.rect(
+        buffer.noFill();
+        buffer.rect(
           posX - game.tileSize,
           posY - game.tileSize,
           2 * game.tileSize,
@@ -144,7 +158,7 @@ const bc = (p) => {
       }
     });
 
-    a += 0.01;
+   // a += da;
   };
 };
 
@@ -161,9 +175,9 @@ function cursorFrame(cv) {
   ) {
     return;
   }
-  cv.strokeWeight(1);
-  cv.noStroke();
-  cv.fill(255);
+  buffer.strokeWeight(1);
+  buffer.noStroke();
+  buffer.fill(255);
   let vcount = game.size * game.size;
   var svc = Math.sqrt(vcount);
   let qx = Math.floor(cv.mouseX / (game.tileSize * 2));
@@ -174,7 +188,7 @@ function cursorFrame(cv) {
 
   qy = cv.min(qy, svc - 1);
   qy = cv.max(0, qy);
-  cv.noFill();
-  cv.stroke(255, 255, 255);
-  cv.square(qx * game.tileSize * 2, qy * game.tileSize * 2, game.tileSize * 2);
+  buffer.noFill();
+  buffer.stroke(255, 255, 255);
+  buffer.square(qx * game.tileSize * 2, qy * game.tileSize * 2, game.tileSize * 2);
 }

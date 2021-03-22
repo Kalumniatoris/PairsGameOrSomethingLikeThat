@@ -36,11 +36,7 @@ class Shape {
   }
 
   Sdraw(x, y, s, canvas,border=this.border,fill=this.fill,shape=this.shape) {
-    if(isWon &&  game.bcolors[border][3]!=50) {
-      
-      game.bcolors[border][3] =50;
-      game.colors[fill][3] =100;
-    }
+ 
     canvas.fill(game.colors[fill]);
     canvas.stroke(game.bcolors[border]);
 

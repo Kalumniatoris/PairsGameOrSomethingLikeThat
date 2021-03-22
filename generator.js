@@ -184,6 +184,7 @@ function generateColors(count) {
   }
 
   game.colors = colors;
+  cs=true;
   //  game.bcolors = bcolors;
 }
 
